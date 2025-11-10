@@ -1,11 +1,13 @@
 package dk.easv.mrs.GUI.Controller;
-
+//Package imports
 import dk.easv.mrs.BE.Movie;
 import dk.easv.mrs.GUI.Model.MovieModel;
+//JavaFX imports
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+//Java imports
 import java.net.URL;
 import java.util.ResourceBundle;
 

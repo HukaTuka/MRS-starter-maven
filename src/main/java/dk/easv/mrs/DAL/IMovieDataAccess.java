@@ -1,5 +1,7 @@
 package dk.easv.mrs.DAL;
+//Package imports
 import dk.easv.mrs.BE.Movie;
+//Java imports
 import java.util.List;
 
 public interface IMovieDataAccess {
