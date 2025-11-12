@@ -1,7 +1,8 @@
 package dk.easv.mrs.GUI.Controller;
-
+//Package imports
 import dk.easv.mrs.BE.Movie;
 import dk.easv.mrs.GUI.Model.MovieModel;
+//JavaFX imports
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
