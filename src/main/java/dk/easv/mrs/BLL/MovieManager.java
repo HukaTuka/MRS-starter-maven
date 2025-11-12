@@ -25,4 +25,12 @@ public class MovieManager {
         List<Movie> searchResult = movieSearcher.search(allMovies, query);
         return searchResult;
     }
+
+    public Movie createMovie(Movie newMovie) throws Exception {
+        return movieDAO.createMovie(newMovie);
+    }
+
+    public void deleteMovie(Movie movie) throws Exception {
+        movieDAO.deleteMovie(movie);
+    }
 }

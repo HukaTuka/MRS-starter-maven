@@ -11,7 +11,6 @@ import java.util.List;
 public class MovieModel {
 
     private ObservableList<Movie> moviesToBeViewed;
-
     private MovieManager movieManager;
 
     public MovieModel() throws Exception {
@@ -19,8 +18,6 @@ public class MovieModel {
         moviesToBeViewed = FXCollections.observableArrayList();
         moviesToBeViewed.addAll(movieManager.getAllMovies());
     }
-
-
 
     public ObservableList<Movie> getObservableMovies() {
         return moviesToBeViewed;
@@ -30,5 +27,14 @@ public class MovieModel {
         List<Movie> searchResults = movieManager.searchMovies(query);
         moviesToBeViewed.clear();
         moviesToBeViewed.addAll(searchResults);
+    }
+
+    public Movie createMovie(Movie newMovie) throws Exception {
+        return movieManager.createMovie(newMovie);
+    }
+
+    public void deleteMovie(Movie movie) throws Exception {
+        movieManager.deleteMovie(movie);
+        moviesToBeViewed.remove(movie);
     }
 }

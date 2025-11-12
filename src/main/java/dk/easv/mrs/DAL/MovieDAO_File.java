@@ -14,9 +14,7 @@ public class MovieDAO_File implements IMovieDataAccess {
 
     private static final String pathToFile = "data/movie_titles.txt";
 
-    //The @Override annotation is not required, but is recommended for readability
-    // and to force the compiler to check and generate error msg. if needed etc.
-    //@Override
+    @Override
     public List<Movie> getAllMovies() throws IOException {
 
         // Read all lines from file
@@ -45,19 +43,23 @@ public class MovieDAO_File implements IMovieDataAccess {
     }
 
     @Override
-    public Movie createMovie(String title, int year) throws Exception {
+    public Movie createMovie(Movie newMovie) throws Exception {
         List<String> movies = Files.readAllLines(Path.of(pathToFile));
 
-        if (movies.size() > 0) {
-            // get next id
-            String[] separatedLine = movies.get(movies.size() - 1).split(",");
-            int nextId = Integer.parseInt(separatedLine[0]) + 1;
-            String newMovieLine = nextId + "," + year + "," + title;
-            Files.write(Path.of(pathToFile), (newMovieLine + "\r\n").getBytes(), APPEND);
+        int nextId = 1; // Default ID if file is empty
 
-            return new Movie(nextId, year, title);
+        if (movies.size() > 0) {
+            // Get the last movie's ID and increment
+            String[] separatedLine = movies.get(movies.size() - 1).split(",");
+            nextId = Integer.parseInt(separatedLine[0]) + 1;
         }
-        return null;
+
+        // Create the new movie line and write to file
+        String newMovieLine = nextId + "," + newMovie.getYear() + "," + newMovie.getTitle();
+        Files.write(Path.of(pathToFile), (newMovieLine + "\r\n").getBytes(), APPEND);
+
+        // Return a new Movie object with the correct ID
+        return new Movie(nextId, newMovie.getYear(), newMovie.getTitle());
     }
 
     @Override
@@ -66,5 +68,26 @@ public class MovieDAO_File implements IMovieDataAccess {
 
     @Override
     public void deleteMovie(Movie movie) throws Exception {
+        // Read all lines from file
+        List<String> lines = Files.readAllLines(Path.of(pathToFile));
+        List<String> updatedLines = new ArrayList<>();
+
+        // Keep all lines except the one matching the movie ID
+        for (String line : lines) {
+            String[] parts = line.split(",");
+            int id = Integer.parseInt(parts[0]);
+
+            if (id != movie.getId()) {
+                updatedLines.add(line);
+            }
+        }
+
+        // Write the updated list back to the file
+        Files.write(Path.of(pathToFile), String.join("\r\n", updatedLines).getBytes());
+
+        // Add a newline at the end if there are any movies left
+        if (!updatedLines.isEmpty()) {
+            Files.write(Path.of(pathToFile), "\r\n".getBytes(), APPEND);
+        }
     }
 }
