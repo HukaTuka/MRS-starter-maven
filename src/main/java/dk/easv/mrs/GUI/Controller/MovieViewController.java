@@ -56,15 +56,12 @@ public class MovieViewController implements Initializable {
 
     public void onBtnClickOpenCreate(ActionEvent actionEvent) {
         try {
-            // Load the FXML for the new window
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CreateNewView.fxml"));
             Parent root = loader.load();
 
-            // Get the controller and pass the model
             CreateNewViewController controller = loader.getController();
             controller.setModel(movieModel);
 
-            // Create and show the new stage
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setTitle("Create New Movie");
@@ -79,10 +76,8 @@ public class MovieViewController implements Initializable {
 
     public void onBtnClickDeleteMovie(ActionEvent actionEvent) {
         try {
-            // Get the selected movie from the list
             Movie selectedMovie = lstMovies.getSelectionModel().getSelectedItem();
 
-            // Check if a movie is selected
             if (selectedMovie == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("No Selection");
@@ -92,7 +87,6 @@ public class MovieViewController implements Initializable {
                 return;
             }
 
-            // Show confirmation dialog
             Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
             confirmation.setTitle("Delete Movie");
             confirmation.setHeaderText("Delete \"" + selectedMovie.getTitle() + "\"?");
@@ -100,17 +94,51 @@ public class MovieViewController implements Initializable {
 
             Optional<ButtonType> result = confirmation.showAndWait();
 
-            // If user confirms, delete the movie
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 movieModel.deleteMovie(selectedMovie);
 
-                // Show success message
                 Alert success = new Alert(Alert.AlertType.INFORMATION);
                 success.setTitle("Success");
                 success.setHeaderText("Movie deleted");
                 success.setContentText("The movie has been successfully deleted.");
                 success.showAndWait();
             }
+
+        } catch (Exception e) {
+            displayError(e);
+            e.printStackTrace();
+        }
+    }
+
+    public void onBtnClickOpenUpdate(ActionEvent actionEvent) {
+        try {
+            // Get the selected movie
+            Movie selectedMovie = lstMovies.getSelectionModel().getSelectedItem();
+
+            if (selectedMovie == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("No Selection");
+                alert.setHeaderText("No movie selected");
+                alert.setContentText("Please select a movie from the list to update.");
+                alert.showAndWait();
+                return;
+            }
+
+            // Load the FXML for the update window
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/UpdateMovieView.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller and pass the model and selected movie
+            UpdateMovieViewController controller = loader.getController();
+            controller.setModel(movieModel);
+            controller.setMovie(selectedMovie);
+
+            // Create and show the new stage
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Update Movie");
+            stage.setScene(scene);
+            stage.show();
 
         } catch (Exception e) {
             displayError(e);

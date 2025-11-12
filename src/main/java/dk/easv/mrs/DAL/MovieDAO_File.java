@@ -64,6 +64,31 @@ public class MovieDAO_File implements IMovieDataAccess {
 
     @Override
     public void updateMovie(Movie movie) throws Exception {
+        // Read all lines from file
+        List<String> lines = Files.readAllLines(Path.of(pathToFile));
+        List<String> updatedLines = new ArrayList<>();
+
+        // Update the line matching the movie ID
+        for (String line : lines) {
+            String[] parts = line.split(",");
+            int id = Integer.parseInt(parts[0]);
+
+            if (id == movie.getId()) {
+                // Replace with updated movie data
+                updatedLines.add(movie.getId() + "," + movie.getYear() + "," + movie.getTitle());
+            } else {
+                // Keep the original line
+                updatedLines.add(line);
+            }
+        }
+
+        // Write the updated list back to the file
+        Files.write(Path.of(pathToFile), String.join("\r\n", updatedLines).getBytes());
+
+        // Add a newline at the end
+        if (!updatedLines.isEmpty()) {
+            Files.write(Path.of(pathToFile), "\r\n".getBytes(), APPEND);
+        }
     }
 
     @Override

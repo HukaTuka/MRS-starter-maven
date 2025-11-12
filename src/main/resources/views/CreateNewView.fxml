@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="300.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.CreateNewViewController">
    <children>
       <Label layoutX="88.0" layoutY="31.0" text="Add new movie">
@@ -15,7 +14,9 @@
          </font>
       </Label>
       <TextField fx:id="txtNewMovieName" layoutX="95.0" layoutY="98.0" promptText="Name" />
-      <TextField fx:id="txtNewMovieYear" layoutX="95.0" layoutY="155.0" promptText="Year" />
+      <TextField fx:id="txtNewMovieYear" layoutX="95.0" layoutY="159.0" promptText="Year" />
       <Button layoutX="148.0" layoutY="227.0" mnemonicParsing="false" onAction="#onBtnClickCreate" text="Create" />
+      <Label layoutX="95.0" layoutY="81.0" text="Name:" />
+      <Label layoutX="95.0" layoutY="142.0" text="Year:" />
    </children>
 </AnchorPane>

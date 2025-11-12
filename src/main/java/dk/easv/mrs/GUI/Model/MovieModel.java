@@ -37,4 +37,21 @@ public class MovieModel {
         movieManager.deleteMovie(movie);
         moviesToBeViewed.remove(movie);
     }
+
+    public void updateMovie(Movie movie) throws Exception {
+        movieManager.updateMovie(movie);
+
+        // Update the observable list to refresh the UI
+        int index = -1;
+        for (int i = 0; i < moviesToBeViewed.size(); i++) {
+            if (moviesToBeViewed.get(i).getId() == movie.getId()) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            moviesToBeViewed.set(index, movie);
+        }
+    }
 }

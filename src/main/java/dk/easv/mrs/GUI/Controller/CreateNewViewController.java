@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CreateNewViewController {
-    public TextField txtNewMovieName;  // Changed from txtNewMovieTitle to match FXML
+    public TextField txtNewMovieName;
     public TextField txtNewMovieYear;
     private MovieModel movieModel;
 
@@ -19,7 +19,7 @@ public class CreateNewViewController {
 
     public void onBtnClickCreate(ActionEvent actionEvent) {
         try {
-            String title = txtNewMovieName.getText();  // Changed to txtNewMovieName
+            String title = txtNewMovieName.getText();
             int year = Integer.parseInt(txtNewMovieYear.getText());
 
             Movie newMovie = new Movie(-1, year, title);
@@ -29,7 +29,7 @@ public class CreateNewViewController {
             movieModel.getObservableMovies().add(createdMovie);
 
             // Close the window after creating the movie
-            Stage stage = (Stage) txtNewMovieName.getScene().getWindow();  // Changed here too
+            Stage stage = (Stage) txtNewMovieName.getScene().getWindow();
             stage.close();
 
         } catch (NumberFormatException e) {
