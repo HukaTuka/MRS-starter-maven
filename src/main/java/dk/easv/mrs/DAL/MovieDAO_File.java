@@ -1,4 +1,8 @@
 package dk.easv.mrs.DAL;
+
+/**
+
+
 //Package imports
 import dk.easv.mrs.BE.Movie;
 //Java imports
@@ -116,3 +120,4 @@ public class MovieDAO_File implements IMovieDataAccess {
         }
     }
 }
+ */
