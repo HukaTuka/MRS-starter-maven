@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 //Java imports
 import java.net.URL;
@@ -20,6 +21,9 @@ public class MovieViewController implements Initializable {
     public TextField txtMovieSearch;
     public ListView<Movie> lstMovies;
     public MenuButton btnOptions;
+    public TableView<Movie> tblViewMovies;
+    public TableColumn<Movie, String> tblName;
+    public TableColumn<Movie, Integer> tblYear;
     private MovieModel movieModel;
 
 
@@ -34,11 +38,15 @@ public class MovieViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lstMovies.setItems(movieModel.getObservableMovies());
+        tblName.setCellValueFactory(new PropertyValueFactory<>("Title"));
+        tblYear.setCellValueFactory(new PropertyValueFactory<>("Year"));
 
-        // Hides the buttons when no movies is selected.
+        lstMovies.setItems(movieModel.getObservableMovies());
+        tblViewMovies.setItems(movieModel.getObservableMovies());
+
+        // Hides the buttons when no movies are selected.
         btnOptions.visibleProperty().bind(
-                lstMovies.getSelectionModel().selectedItemProperty().isNotNull()
+                tblViewMovies.getSelectionModel().selectedItemProperty().isNotNull()
         );
 
 
@@ -89,7 +97,7 @@ public class MovieViewController implements Initializable {
      */
     public void onBtnClickDeleteMovie(ActionEvent actionEvent) {
         try {
-            Movie selectedMovie = lstMovies.getSelectionModel().getSelectedItem();
+            Movie selectedMovie = tblViewMovies.getSelectionModel().getSelectedItem();
 
             if (selectedMovie == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -126,7 +134,8 @@ public class MovieViewController implements Initializable {
     public void onBtnClickOpenUpdate(ActionEvent actionEvent) {
         try {
             // Get the selected movie
-            Movie selectedMovie = lstMovies.getSelectionModel().getSelectedItem();
+            Movie selectedMovie = tblViewMovies.getSelectionModel().getSelectedItem();
+
 
             if (selectedMovie == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);

@@ -4,12 +4,14 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="354.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
+<AnchorPane prefHeight="354.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
    <children>
-      <ListView fx:id="lstMovies" layoutY="54.0" prefHeight="156.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="54.0" />
+      <ListView fx:id="lstMovies" layoutY="54.0" prefHeight="290.0" prefWidth="364.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="328.0" AnchorPane.topAnchor="54.0" />
       <TextField fx:id="txtMovieSearch" layoutX="10.0" layoutY="14.0" promptText="Search" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
       <Button layoutX="176.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtnClickOpenCreate" prefHeight="26.0" prefWidth="124.0" text="Create new movie" />
       <MenuButton fx:id="btnOptions" layoutX="309.0" layoutY="10.0" mnemonicParsing="false" text="Options">
@@ -26,5 +28,11 @@
             </MenuItem>
         </items>
       </MenuButton>
+      <TableView fx:id="tblViewMovies" layoutX="388.0" layoutY="54.0" prefHeight="290.0" prefWidth="310.0">
+        <columns>
+          <TableColumn fx:id="tblName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="tblYear" prefWidth="75.0" text="Year" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
