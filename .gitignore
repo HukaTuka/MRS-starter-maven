@@ -11,6 +11,9 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea/shelf/
+.idea/workspace.xml
+
 
 ### Eclipse ###
 .apt_generated
@@ -37,4 +40,20 @@ build/
 ### Mac OS ###
 .DS_Store
 
+### Logs ###
+*.log
+logs/
+
+### Temp files ###
+*.tmp
+*.swp
+*.swo
+
+### Windows ###
+Thumbs.db
+desktop.ini
+
+### Config ###
 config/config.settings
+config/*.local
+config/*.secret
