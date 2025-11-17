@@ -19,7 +19,7 @@ public class MovieViewController implements Initializable {
 
     public TextField txtMovieSearch;
     public ListView<Movie> lstMovies;
-    public Button btnDelete, btnUpdate;
+    public MenuButton btnOptions;
     private MovieModel movieModel;
 
 
@@ -37,12 +37,10 @@ public class MovieViewController implements Initializable {
         lstMovies.setItems(movieModel.getObservableMovies());
 
         // Hides the buttons when no movies is selected.
-        btnDelete.visibleProperty().bind(
+        btnOptions.visibleProperty().bind(
                 lstMovies.getSelectionModel().selectedItemProperty().isNotNull()
         );
-        btnUpdate.visibleProperty().bind(
-                lstMovies.getSelectionModel().selectedItemProperty().isNotNull()
-        );
+
 
         txtMovieSearch.textProperty().addListener((observableValue, oldValue, newValue) -> {
             try {
