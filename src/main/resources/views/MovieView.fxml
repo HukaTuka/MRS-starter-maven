@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="354.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
+<AnchorPane prefHeight="354.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
    <children>
       <ListView fx:id="lstMovies" layoutY="54.0" prefHeight="290.0" prefWidth="364.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="328.0" AnchorPane.topAnchor="54.0" />
       <TextField fx:id="txtMovieSearch" layoutX="10.0" layoutY="14.0" promptText="Search" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
@@ -28,11 +28,14 @@
             </MenuItem>
         </items>
       </MenuButton>
-      <TableView fx:id="tblViewMovies" layoutX="388.0" layoutY="54.0" prefHeight="290.0" prefWidth="310.0">
+      <TableView fx:id="tblViewMovies" editable="true" layoutX="388.0" layoutY="54.0" prefHeight="290.0" prefWidth="418.0">
         <columns>
-          <TableColumn fx:id="tblName" prefWidth="75.0" text="Name" />
-          <TableColumn fx:id="tblYear" prefWidth="75.0" text="Year" />
+          <TableColumn fx:id="tblName" prefWidth="244.0" text="Name" />
+          <TableColumn fx:id="tblYear" minWidth="0.0" prefWidth="65.0" text="Year" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </children>
 </AnchorPane>
