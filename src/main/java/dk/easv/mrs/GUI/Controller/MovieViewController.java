@@ -54,6 +54,10 @@ public class MovieViewController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Open the menu to create a new movie
+     * @param actionEvent on btn click
+     */
     public void onBtnClickOpenCreate(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CreateNewView.fxml"));
@@ -74,6 +78,10 @@ public class MovieViewController implements Initializable {
         }
     }
 
+    /**
+     * prompts confirmation to delete a selected movie, deletes on confirmation.
+     * @param actionEvent event triggered by clicking delete button
+     */
     public void onBtnClickDeleteMovie(ActionEvent actionEvent) {
         try {
             Movie selectedMovie = lstMovies.getSelectionModel().getSelectedItem();

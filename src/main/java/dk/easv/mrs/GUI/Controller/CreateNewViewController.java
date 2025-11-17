@@ -18,6 +18,10 @@ public class CreateNewViewController {
         this.movieModel = movieModel;
     }
 
+    /**
+     * Adding a new movie to the list on btn click
+     * @param actionEvent btn click add new movie to list
+     */
     public void onBtnClickCreate(ActionEvent actionEvent) {
         try {
             String title = txtNewMovieName.getText();
@@ -41,6 +45,10 @@ public class CreateNewViewController {
         }
     }
 
+    /**
+     * error handling
+     * @param t display something went wrong on error
+     */
     private void displayError(Throwable t) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Something went wrong");

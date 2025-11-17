@@ -9,8 +9,8 @@
    <children>
       <ListView fx:id="lstMovies" layoutY="54.0" prefHeight="156.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="54.0" />
       <TextField fx:id="txtMovieSearch" layoutX="10.0" layoutY="14.0" promptText="Search" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Button layoutX="176.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnClickOpenCreate" prefHeight="26.0" prefWidth="124.0" text="Create new movie" />
-      <Button layoutX="306.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnClickDeleteMovie" text="Delete Movie" />
-      <Button layoutX="401.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnClickOpenUpdate" text="Update Movie" />
+      <Button layoutX="176.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtnClickOpenCreate" prefHeight="26.0" prefWidth="124.0" text="Create new movie" />
+      <Button layoutX="306.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtnClickDeleteMovie" text="Delete Movie" />
+      <Button layoutX="401.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtnClickOpenUpdate" text="Update Movie" />
    </children>
 </AnchorPane>
