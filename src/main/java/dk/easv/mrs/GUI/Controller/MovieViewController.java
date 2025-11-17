@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 //Java imports
 import java.net.URL;
@@ -22,7 +19,9 @@ public class MovieViewController implements Initializable {
 
     public TextField txtMovieSearch;
     public ListView<Movie> lstMovies;
+    public Button btnDelete, btnUpdate;
     private MovieModel movieModel;
+
 
     public MovieViewController()  {
         try {
@@ -36,6 +35,14 @@ public class MovieViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lstMovies.setItems(movieModel.getObservableMovies());
+
+        // Hides the buttons when no movies is selected.
+        btnDelete.visibleProperty().bind(
+                lstMovies.getSelectionModel().selectedItemProperty().isNotNull()
+        );
+        btnUpdate.visibleProperty().bind(
+                lstMovies.getSelectionModel().selectedItemProperty().isNotNull()
+        );
 
         txtMovieSearch.textProperty().addListener((observableValue, oldValue, newValue) -> {
             try {
