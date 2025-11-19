@@ -4,6 +4,7 @@ import dk.easv.mrs.BE.Movie;
 import dk.easv.mrs.GUI.Model.MovieModel;
 //JavaFX imports
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -18,12 +19,18 @@ import java.util.ResourceBundle;
 
 public class MovieViewController implements Initializable {
 
-    public TextField txtMovieSearch;
-    public ListView<Movie> lstMovies;
-    public MenuButton btnOptions;
-    public TableView<Movie> tblViewMovies;
-    public TableColumn<Movie, String> tblName;
-    public TableColumn<Movie, Integer> tblYear;
+    @FXML
+    private TextField txtMovieSearch;
+    //private ListView<Movie> lstMovies;
+    @FXML
+    private MenuButton btnOptions;
+    @FXML
+    private TableView<Movie> tblViewMovies;
+    @FXML
+    private TableColumn<Movie, String> tblName;
+    @FXML
+    private TableColumn<Movie, Integer> tblYear;
+    @FXML
     private MovieModel movieModel;
 
 
@@ -41,7 +48,7 @@ public class MovieViewController implements Initializable {
         tblName.setCellValueFactory(new PropertyValueFactory<>("Title"));
         tblYear.setCellValueFactory(new PropertyValueFactory<>("Year"));
 
-        lstMovies.setItems(movieModel.getObservableMovies());
+        //lstMovies.setItems(movieModel.getObservableMovies());
         tblViewMovies.setItems(movieModel.getObservableMovies());
 
         // Hides the buttons when no movies are selected.
