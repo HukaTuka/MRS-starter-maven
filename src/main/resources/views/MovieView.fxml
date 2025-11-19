@@ -11,8 +11,8 @@
 <AnchorPane prefHeight="354.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
    <children>
       <TextField fx:id="txtMovieSearch" layoutX="10.0" layoutY="14.0" promptText="Search" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Button layoutX="176.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtnClickOpenCreate" prefHeight="26.0" prefWidth="124.0" text="Create new movie" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0" />
-      <MenuButton fx:id="btnOptions" layoutX="309.0" layoutY="10.0" mnemonicParsing="false" text="Options" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <Button layoutX="176.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtnClickOpenCreate" prefHeight="26.0" prefWidth="124.0" text="Create new movie" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="10.0" />
+      <MenuButton fx:id="btnOptions" layoutX="309.0" layoutY="10.0" mnemonicParsing="false" text="Options" AnchorPane.leftAnchor="315.0" AnchorPane.topAnchor="10.0">
         <items>
           <MenuItem mnemonicParsing="false">
                <graphic>
